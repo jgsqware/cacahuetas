@@ -1,44 +1,32 @@
 'use strict';
 
-angular.module('todoApp', [])
-        .controller('todoController', function ($scope, $http) {
-                $scope.tasks = [{
-                        "id": 1,
-                        "name": "Julien",
-                        "email": "garciagonzalez.julien@gmail.com"
-                },
-                        {
-                                "id": 2,
-                                "name": "Céline",
-                                "email": "jgonzalez@wemanity.com"
-                        }];
+angular.module('cacahuetasApp', [])
+        .controller('cacahuetasController', function ($scope, $http) {
+                $scope.cacahuetas = [];
                 $scope.shuffledItems = [];
                 $scope.add = function () {
-                        $scope.tasks.push({
-                                "id": $scope.tasks.length + 1,
+                        $scope.cacahuetas.push({
+                                "id": $scope.cacahuetas.length + 1,
                                 "name": $scope.name,
                                 "email": $scope.email
                         });
-                        
-                        //$scope.name = "";
-                        //$scope.email = "";
                 }
                 $scope.delete = function () {
-                        $scope.tasks.splice(this.$index, 1);
+                        $scope.cacahuetas.splice(this.$index, 1);
                 }
                 $scope.shuffle = function () {
-                        if ($scope.tasks.length > 1) {
+                        if ($scope.cacahuetas.length > 1) {
                                 var indexes = [];
-                                $scope.tasks.forEach(function (element, index, array) {
+                                $scope.cacahuetas.forEach(function (element, index, array) {
                                         indexes.push(index);
                                 })
 
 
-                                var givers = $scope.tasks.slice();
-                                var receivers = $scope.tasks.slice();
+                                var givers = $scope.cacahuetas.slice();
+                                var receivers = $scope.cacahuetas.slice();
 
                                 $scope.shuffledItems = [];
-                                var counter = $scope.tasks.length, index;
+                                var counter = $scope.cacahuetas.length, index;
 
                                 while (givers.length > 0) {
                                         var giverIndex = Math.floor(Math.random() * givers.length);
@@ -63,7 +51,7 @@ angular.module('todoApp', [])
                                         }
                                 };
 
-                                $http.post('/users/mail', $scope.shuffledItems, postConfig)
+                                $http.post('/cacahuetas/mail', $scope.shuffledItems, postConfig)
                                         .then(
                                                 function (response) {
                                                         $scope.shuffledItems = {}; // clear the form so our user is ready to enter another

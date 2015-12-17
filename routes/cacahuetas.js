@@ -12,12 +12,6 @@ var transporter = nodemailer.createTransport({
 });
 
 
-
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
-
 router.post('/mail', function (req, res, next) {
   var cacahuetas = req.body;
   cacahuetas.forEach(function(element,index,array){
@@ -25,7 +19,7 @@ router.post('/mail', function (req, res, next) {
       console.log("receiver: "+element.receiver.name);
       
       var mailOptions = {
-        from: 'Cacahuetas ✔ <gift@cacahuetas.be>', // sender address
+        from: '🎁 Cacahuetas 🎁 <gift@cacahuetas.be>', // sender address
         to: element.giver.email, // list of receivers
         subject: 'See your cacahuetas', // Subject line
         html: '<b>Hello '+element.giver.name+' ✔</b><br/>You will give a present to '+element.receiver.name+'.<br/> Shut! It\'s a secret' // html body
@@ -39,7 +33,7 @@ router.post('/mail', function (req, res, next) {
       });
       
       var mailOptions = {
-        from: 'Cacahuetas ✔ <gift@cacahuetas.be>', // sender address
+        from: '🎁 Cacahuetas 🎁 <gift@cacahuetas.be>', // sender address
         to: element.receiver.email, // list of receivers
         subject: 'You will receive a present.', // Subject line
         html: '<b>Hello '+element.receiver.name+' ✔</b><br/>You will receive a present .<br/> Reply to this email with your wishlist.' // html body

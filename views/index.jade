@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  div.container(ng-controller='todoController')
+  div.container(ng-controller='cacahuetasController')
     div.jumbotron.text-center
       h1 Cacahuetas
-    
-    div.row#todo-form
+      h2 Your gift randomizer
+      
+    div.row#cacahuetas-form
       div.col-sm-10.col-sm-offset-2.text-center
         form(
             name='cacahuetasForm'
@@ -43,14 +44,14 @@ block content
               )
                 span.glyphicon.glyphicon-plus
               
-    div.row#todo-list
+    div.row#cacahuetas-list
       div.col-sm-10.col-sm-offset-2.text-center
-        div(ng-repeat='task in tasks')
+        div(ng-repeat='cacahueta in cacahuetas')
           div.form-group.row
             div.col-md-4
-              p {{ task.name }}
+              p {{ cacahueta.name }}
             div.col-md-4
-              p {{ task.email }}
+              p {{ cacahueta.email }}
             div.col-md-1
               button.btn.btn-primary.btn-lg.btn-danger(
                 type='submit'
@@ -63,7 +64,7 @@ block content
         button.btn.btn-primary.btn-lg.btn-info(
               type='submit'
               ng-click='shuffle()'
-              ng-disabled='tasks.length <= 1'
+              ng-disabled='cacahueta.length <= 1'
             )
           span.glyphicon.glyphicon-gift
   
