@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  div.container(ng-controller='todoController')
+    div.jumbotron.text-center
+      h1 Cacahuetas
+    
+    div.row#todo-form
+      div.col-sm-10.col-sm-offset-2.text-center
+        form(
+            name='cacahuetasForm'
+            ng-submit='add()'
+            novalidate
+          )
+          div.form-group.row
+            div.col-md-4
+              input.form-control.input-lg(
+                  type='text'
+                  name='name'
+                  placeholder='John Doe' 
+                  ng-model='name'
+                  required
+              )
+              div(role='alert')
+                span.text-error(ng-show='cacahuetasForm.name.$error.required') Required!
+            div.col-md-4
+              input.form-control.input-lg(
+                  name='email'
+                  type='email'
+                  ng-pattern='/^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,50})$/'
+                  required
+                  placeholder='john.doe@gmail.com' 
+                  ng-model='email'
+              )
+              div(role='alert')
+                span.text-error(ng-show='cacahuetasForm.email.$error.required') Required!
+                span.text-error(ng-show='cacahuetasForm.email.$invalid && !cacahuetasForm.email.$error.required') Not valid email!
+             
+            div.col-md-1
+              button.btn.btn-primary.btn-lg.btn-success(
+                  type='submit'
+                  ng-disabled='cacahuetasForm.$invalid'
+              )
+                span.glyphicon.glyphicon-plus
+              
+    div.row#todo-list
+      div.col-sm-10.col-sm-offset-2.text-center
+        div(ng-repeat='task in tasks')
+          div.form-group.row
+            div.col-md-4
+              p {{ task.name }}
+            div.col-md-4
+              p {{ task.email }}
+            div.col-md-1
+              button.btn.btn-primary.btn-lg.btn-danger(
+                type='submit'
+                ng-click='delete()'
+              )
+                span.glyphicon.glyphicon-minus
+                
+    div.row#shuffle
+      div.col-sm-11.text-center
+        button.btn.btn-primary.btn-lg.btn-info(
+              type='submit'
+              ng-click='shuffle()'
+              ng-disabled='tasks.length <= 1'
+            )
+          span.glyphicon.glyphicon-gift
+  
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js')
+  script(src='javascripts/app.js')
