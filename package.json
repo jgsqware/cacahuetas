@@ -13,6 +13,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "nodemailer": "^1.10.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "styliner": "^0.8.9"
   }
 }

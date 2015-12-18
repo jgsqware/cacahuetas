@@ -1,8 +1,35 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(../images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-a {
-  color: #00B7FF;
+.form-control::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.7); }
+.form-control:-moz-placeholder { color: rgba(255, 255, 255, 0.7); }
+.form-control::-moz-placeholder { color: rgba(255, 255, 255, 0.7); }
+.form-control:-ms-input-placeholder { color: rgba(255, 255, 255, 0.7); }
+
+.text-error { color: #e05353; }
+
+.top-buffer { margin-top:20px; }
+.btn-info { background-color: #00BCD4;}
+.form-control { color:white }
+h1 {
+  font-family: "Stalemate";
+  font-size: 10em;
+  margin-bottom: -60px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-left: 15px;
+}
+
+p.cacahuetas {
+  color: #81e4ef;
+  margin-top: 0.4em;
+  font-size: 17px;
+  color:white
 }
